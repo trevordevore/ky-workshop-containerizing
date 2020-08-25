@@ -10,7 +10,6 @@ RUN apt-get install -y imagemagick
 RUN mkdir -p /app
 WORKDIR /app
 
-
 ARG RAILS_ENV
 # Copy the Gemfile and Gemfile.lock and bundle
 COPY Gemfile ./
