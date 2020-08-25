@@ -3,10 +3,11 @@ FROM engineyard/kontainers:ruby-2.5-v1.0.0
 # This will be needed by spree
 RUN apt-get install -y imagemagick
 
-# Configure the main working directory. This is the base 
-# directory used in any further RUN, COPY, and ENTRYPOINT 
+
+# Configure the main working directory. This is the base
+# directory used in any further RUN, COPY, and ENTRYPOINT
 # commands.
-RUN mkdir -p /app 
+RUN mkdir -p /app
 WORKDIR /app
 
 
@@ -28,19 +29,19 @@ RUN erb -T - ./ky-specific/config/database.yml.erb > config/database.yml
 RUN cp ./ky-specific/config/sidekiq.yml config/sidekiq.yml
 
 # Make the migration script runable
-RUN chmod +x ky-specific/migration/db-migrate.sh 
+RUN chmod +x ky-specific/migration/db-migrate.sh
 
 
 # Precompile Rails assets
 RUN bundle exec rake assets:precompile
 
 
-# Expose port 5000 to the Docker host, so we can access it 
+# Expose port 5000 to the Docker host, so we can access it
 # from the outside. This is the same as the one set with
 # `deis config:set PORT 5000`
 EXPOSE 5000
 
-# The main command to run when the container starts. Also 
-# tell the Rails dev server to bind to all interfaces by 
-# default. 
+# The main command to run when the container starts. Also
+# tell the Rails dev server to bind to all interfaces by
+# default.
 CMD sleep 3600
