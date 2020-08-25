@@ -4,4 +4,3 @@ defaults:
   #migrate: true
   #migration_command: rake db:migrate
   precompile_assets: true
-  precompile_assets_command: . /data/ky_demo_applications/shared/config/env.cloud && rake assets:precompile
